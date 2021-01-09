@@ -1,0 +1,12 @@
+<% include ../views/layout %>
+<h1>Subscribers</h1>
+<ul>
+  <% subscribers.forEach(function(subscriber){ %>
+  <li>
+    <a href="/subscriber/<%=subscriber.id%>"><%=subscriber.email%></a>
+  </li>
+  <% }) %>
+  <a href="/addsubscriber">Add Subscriber </a>
+  
+</ul>
+<button type="button" class="btn btn-primary">Primary</button>
