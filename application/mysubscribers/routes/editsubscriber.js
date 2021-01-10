@@ -13,7 +13,6 @@ client.connect(function (err, result) {
 var getSubscriberById = "SELECT * FROM people.subscribers WHERE id= ?";
 /* GET users listing. */
 router.get("/:id", function (req, res, next) {
-  //res.send("respond with a resource");
   client.execute(getSubscriberById, [req.params.id], function (err, result) {
     if (err) {
       res.status(404).send({ msg: err });
@@ -40,7 +39,7 @@ router.post("/", function (req, res) {
         res.status(404).send({ msg: err });
       } else {
         console.log("Subscriber Added");
-        res.redirect("/");
+        res.redirect("/admin");
       }
     }
   );

@@ -1,0 +1,11 @@
+<% include ../views/layout %>
+<h1>All Users</h1>
+<ul>
+  <% users.forEach(function(user){ %>
+  <li>
+    <a href="/user/<%=user.username%>"><%=user.username%></a>
+  </li>
+  <% }) %>
+  <a href="#">Add User </a>
+  
+</ul>

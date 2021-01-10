@@ -1,0 +1,11 @@
+<% include ../views/layout %>
+<h1>User Details</h1>
+<ul>
+  <li>username: "<%= username%>"</li>
+  <li>email: "<%= email%>"</li>
+  <li>name: "<%= name%>"</li>
+  <li>password: "<%= password%>"</li>
+</ul>
+<a class="edituser" href="/edituser/<%=username%>">Edit</a>
+|
+<a class="deleteuser" href="" data-id="<%=username%>">Delete</a>

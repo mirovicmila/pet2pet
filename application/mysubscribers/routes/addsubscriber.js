@@ -30,7 +30,7 @@ router.post("/", function (req, res) {
         res.status(404).send({ msg: err });
       } else {
         console.log("Subscriber Added");
-        res.redirect("/");
+        res.redirect("/admin");
       }
     }
   );

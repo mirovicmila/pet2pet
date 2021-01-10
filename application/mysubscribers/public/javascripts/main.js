@@ -1,15 +1,15 @@
 $(document).ready(function () {
-  $(".deletesubscriber").on("click", deleteSubscriber);
+  $(".deleteuser").on("click", deleteUser);
 });
-function deleteSubscriber() {
-  event.preventDefault(); //da ga ne odvede kad klikne na link
+function deleteUser() {
+  event.preventDefault(); 
   var confirmation = confirm("Are you sure?");
   if (confirmation) {
     $.ajax({
       type: "DELETE",
-      url: "/subscriber/" + $(".deletesubscriber").data("id"),
+      url: "/user/" + $(".deleteuser").data("id"),
     }).done(function (response) {
-      window.location.replace("/");
+      window.location.replace("/admin");
     });
   } else {
     return false;

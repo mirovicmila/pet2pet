@@ -4,10 +4,20 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cassandra = require("cassandra-driver");
+const bcrypt = require("bcrypt");
+
+const users = [];
+console.log(users);
 var indexRouter = require("./routes/index");
 var subscriber = require("./routes/subscriber");
 var addsubscriber = require("./routes/addsubscriber");
 var editsubscriber = require("./routes/editsubscriber");
+var admin = require("./routes/admin");
+var login = require("./routes/login");
+var register = require("./routes/register");
+var user = require("./routes/user");
+var adduser = require("./routes/adduser");
+var edituser = require("./routes/edituser");
 
 var app = express();
 
@@ -25,6 +35,12 @@ app.use("/", indexRouter);
 app.use("/subscriber", subscriber);
 app.use("/addsubscriber", addsubscriber);
 app.use("/editsubscriber", editsubscriber);
+app.use("/admin", admin);
+app.use("/login", login);
+app.use("/register", register);
+app.use("/user", user);
+app.use("/adduser", adduser);
+app.use("/edituser", edituser);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
