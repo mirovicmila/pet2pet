@@ -1,0 +1,6 @@
+KREIRANJE TABELE:
+create keyspace "people" with replication = {'class':'SimpleStrategy', 'replication_factor':3};
+describe keyspaces;
+use people;
+create table users(username text PRIMARY KEY, email text, name text, password text);
+select * from users;
