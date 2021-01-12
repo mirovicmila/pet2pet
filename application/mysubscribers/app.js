@@ -4,20 +4,21 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cassandra = require("cassandra-driver");
-const bcrypt = require("bcrypt");
+var bodyParser = require('body-parser');
+
+var jesteadmin = false;
+var ulogovanuser = false;
 
 const users = [];
 console.log(users);
 var indexRouter = require("./routes/index");
-var subscriber = require("./routes/subscriber");
-var addsubscriber = require("./routes/addsubscriber");
-var editsubscriber = require("./routes/editsubscriber");
 var admin = require("./routes/admin");
 var login = require("./routes/login");
 var register = require("./routes/register");
 var user = require("./routes/user");
 var adduser = require("./routes/adduser");
 var edituser = require("./routes/edituser");
+var loggeduser = require("./routes/loggeduser");
 
 var app = express();
 
@@ -28,19 +29,19 @@ app.set("view engine", "ejs");
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/subscriber", subscriber);
-app.use("/addsubscriber", addsubscriber);
-app.use("/editsubscriber", editsubscriber);
 app.use("/admin", admin);
 app.use("/login", login);
 app.use("/register", register);
 app.use("/user", user);
 app.use("/adduser", adduser);
 app.use("/edituser", edituser);
+app.use("/loggeduser", loggeduser);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

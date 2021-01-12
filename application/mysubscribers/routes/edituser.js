@@ -11,17 +11,20 @@ client.connect(function (err, result) {
   console.log("edituser: cassandra connected");
 });
 var getUserById = "SELECT * FROM people.users WHERE username = ?";
-
+var korisnickoime="";
 router.get("/:username", function (req, res, next) {
   client.execute(getUserById, [req.params.username], function (err, result) {
     if (err) {
       res.status(404).send({ msg: err });
     } else {
+      korisnickoime = result.rows[0].username;
+      console.log("edituser-jesteadmin-ulogovanuser", jesteadmin, ulogovanuser);
       res.render("edituser.ejs", {
         username: result.rows[0].username,
         email: result.rows[0].email,
         name: result.rows[0].name,
-        password: result.rows[0].password
+        password: result.rows[0].password,
+        prikazipass: jesteadmin
       });
     }
   });
@@ -38,8 +41,8 @@ router.post("/", function (req, res) {
       if (err) {
         res.status(404).send({ msg: err });
       } else {
-        console.log("User Added!");
-        res.redirect("/admin");
+        if(jesteadmin) res.redirect("/admin");
+        else res.redirect("/loggeduser/"+korisnickoime);
       }
     }
   );

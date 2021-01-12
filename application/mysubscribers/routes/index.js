@@ -11,9 +11,9 @@ client.connect(function (err, result) {
   console.log("index: cassandra connected");
 });
 var getAllSubscribers = "SELECT * FROM people.subscribers";
-/* GET home page. */
+
 router.get("/", function (req, res, next) {
-  //res.render("index", { title: "My subscribers" });
+  console.log("index-jesteadmin-ulogovanuser: ", jesteadmin, ulogovanuser);
   client.execute(getAllSubscribers, [], function (err, result) {
     if (err) {
       res.status(404).send({ msg: err });

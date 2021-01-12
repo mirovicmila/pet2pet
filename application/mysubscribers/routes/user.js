@@ -10,10 +10,11 @@ var client = new cassandra.Client({
 client.connect(function (err, result) {
   console.log("user: cassandra connected");
 });
+console.log(jesteadmin);
 var getUserById = "SELECT * FROM people.users WHERE username = ?";
 
 router.get("/:username", function (req, res, next) {
-  
+    console.log("user-jesteadmin-ulogovanuser",jesteadmin, ulogovanuser);
     client.execute(getUserById, [req.params.username], function (err, result) {
     if (err) {
       res.status(404).send({ msg: err });
@@ -22,7 +23,8 @@ router.get("/:username", function (req, res, next) {
         username: result.rows[0].username,
         email: result.rows[0].email,
         name: result.rows[0].name,
-        password: result.rows[0].password
+        password: result.rows[0].password,
+        prikazipass: jesteadmin
       });
     }
   });
