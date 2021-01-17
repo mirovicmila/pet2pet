@@ -13,24 +13,34 @@ client.connect(function (err, result) {
 });
 var getBreedById = "SELECT * FROM pet2pet.breed WHERE id = ?";
 var getAllCatteries = "SELECT * FROM pet2pet.catteryInBreed WHERE idbreed = ? ALLOW FILTERING";
+var getCatteries = "SELECT * FROM pet2pet.cattery";
 
 router.get("/:id", function (req, res, next) {
     var idd, breedd, sizee, coatt, colorr, descriptionn, imagee, lifespann, foodd;
     
-    client.execute(getBreedById, [req.params.id], function (err, result) {
-    if (err) {
-      res.status(404).send({ msg: err });
-    } 
-    else {
-      idd = result.rows[0].id;
-      breedd = result.rows[0].breed;
-      sizee = result.rows[0].size;
-      coatt = result.rows[0].coat;
-      colorr = result.rows[0].color;
-      descriptionn = result.rows[0].description;
-      imagee = result.rows[0].image;
-      lifespann = result.rows[0].lifespan;
-      foodd = result.rows[0].food;
+    var sveodgajivacnice;
+    client.execute(getCatteries, function (err, result) {
+      if(err) {
+        res.status(404).send({ msg: err });
+      }
+      else {
+        sveodgajivacnice = result.rows;
+        console.log("sveodgajivacnice: ",sveodgajivacnice);
+        
+        client.execute(getBreedById, [req.params.id], function (err, result) {
+        if (err) {
+          res.status(404).send({ msg: err });
+        } 
+        else {
+        idd = result.rows[0].id;
+        breedd = result.rows[0].breed;
+        sizee = result.rows[0].size;
+        coatt = result.rows[0].coat;
+        colorr = result.rows[0].color;
+        descriptionn = result.rows[0].description;
+        imagee = result.rows[0].image;
+        lifespann = result.rows[0].lifespan;
+        foodd = result.rows[0].food;
 
       client.execute(getAllCatteries, [req.params.id], function (err, result) {
         if (err) {
@@ -38,6 +48,17 @@ router.get("/:id", function (req, res, next) {
         } 
         else {
           console.log("get catteries (breed):", result.rows);
+          var odgajivacnice = result.rows;
+          var tacneodgajivacnice = [];
+          odgajivacnice.forEach(function(o) { 
+            sveodgajivacnice.forEach(function(so) { 
+              console.log("id - idcattery", so.id.toString(), o.idcattery.toString())
+              if(so.id.toString() == o.idcattery.toString()){
+                tacneodgajivacnice.push(o);
+              }
+            })
+          });
+          console.log("tacneodgajivacnice", tacneodgajivacnice);
           res.render("breed.ejs", {
             id: idd,
             breed: breedd,
@@ -48,12 +69,14 @@ router.get("/:id", function (req, res, next) {
             image: imagee,
             lifespan: lifespann,
             food: foodd,
-            catteries: result.rows
+            catteries: tacneodgajivacnice
           });
         }
       });
     }
   });
+}
+})
 });
 
 var deleteBreed = "DELETE FROM pet2pet.breed WHERE id = ?";
