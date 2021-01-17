@@ -4,3 +4,8 @@ describe keyspaces;
 use people;
 create table users(username text PRIMARY KEY, email text, name text, password text);
 select * from users;
+-------------------------------------------------------------------------------------------------
+create keyspace "pet2pet" with replication = {'class':'SimpleStrategy', 'replication_factor':3};
+create table breed(id uuid PRIMARY KEY, breed text, size text, coat text, color text, description text, image text, lifespan text, food text);
+create table cattery(id uuid PRIMARY KEY, name text, address text, contact text, description text, workinghours text, image text);
+create table kitten(id uuid PRIMARY KEY, name text, mom text, dad text, gender text, available text);
