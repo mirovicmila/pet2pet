@@ -13,7 +13,7 @@ client.connect(function (err, result) {
 });
 var getBreedById = "SELECT * FROM pet2pet.breed WHERE id = ?";
 
-router.get("/breed/:id", function (req, res, next) {
+router.get("/:id", function (req, res, next) {
   client.execute(getBreedById, [req.params.id], function (err, result) {
     if (err) {
       res.status(404).send({ msg: err });
@@ -37,10 +37,10 @@ router.get("/breed/:id", function (req, res, next) {
 //Edit breed
 router.post("/", function (req, res) {
   var upsertBreed =
-    "INSERT INTO pet2pet.breed(id, breed, size, coat, color, description, image, lifetime, food) VALUES(?,?,?,?,?,?,?,?,?)";
+    "INSERT INTO pet2pet.breed(id, breed, size, coat, color, description, image, lifespan, food) VALUES(?,?,?,?,?,?,?,?,?)";
   client.execute(
     upsertBreed,
-    [req.body.id, req.body.breed, req.body.size, req.body.coat, req.body.color,req.body.description, req.body.image, req.body.lifetime, req.body.food],
+    [req.body.id, req.body.breed, req.body.size, req.body.coat, req.body.color,req.body.description, req.body.image, req.body.lifespan, req.body.food],
     function (err, result) {
       if (err) {
         res.status(404).send({ msg: err });

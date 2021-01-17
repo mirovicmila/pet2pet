@@ -19,11 +19,12 @@ router.get("/", function (req, res, next) {
 
 //Add breed POST
 router.post("/", function (req, res) {
+  id = cassandra.types.uuid();
   var upsertBreed =
     "INSERT INTO pet2pet.breed(id,breed, size, coat, color, description, image, lifespan, food) VALUES(?,?,?,?,?,?,?,?,?)";
   client.execute(
     upsertBreed,
-    [req.body.id,req.body.breed, req.body.size, req.body.coat, req.body.color, req.body.description, req.body.image, req.body.lifespan, req.body.food],
+    [id, req.body.breed, req.body.size, req.body.coat, req.body.color, req.body.description, req.body.image, req.body.lifespan, req.body.food],
     function (err, result) {
       if (err) {
         res.status(404).send({ msg: err });

@@ -1,3 +1,25 @@
 <% include ../views/layout %>
-<img src="https://i.imgur.com/pQKu6yH.jpg" title="source: imgur.com" class="w-25 p-3 img-fluid" alt="..." />
-<h1 class="display-1">Welcome!</h1>
+<img src="https://i.imgur.com/pQKu6yH.jpg" title="source: imgur.com" class="w-50 p-3 img-fluid" alt="..." />
+<h1 class="display-4">Welcome!</h1>
+<ul>
+    <h3>Catteries</h3>
+  <% catteries.forEach(function(cattery){ %>
+  <li>
+    <a href="/cattery/<%=cattery.id%>"><%=cattery.name%></a>
+  </li>
+  <% }) %>
+  <h3>Breeds</h3> 
+  <br />
+  <% breeds.forEach(function(breed){ %>
+    <li>
+      <a href="/breed/<%=breed.id%>"><%=breed.breed%></a>
+    </li>
+    <% }) %>
+    <br />
+    <h3>Kittens</h3>
+    <% kittens.forEach(function(kitten){ %>
+      <li>
+        <a href="/kitten/<%=kitten.id%>"><%=kitten.name%></a>
+      </li>
+      <% }) %>
+      <br />

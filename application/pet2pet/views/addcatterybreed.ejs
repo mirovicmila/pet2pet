@@ -1,0 +1,24 @@
+<% include ../views/layout %>
+
+<!-- id, breed, size, coat, color, description, image, lifespan, food -->
+<h1 class="display-1">Add Cattery in Breed</h1>
+<form name="addcatterybreed" method="POST" action="/addcatterybreed">
+    <select class="form-control form-control-sm" type="search" name="breedInfo" class="input" id="breedInfo" placeholder="Choose breed">
+        <option selected>Choose Breed</option>
+        <% breeds.forEach(function(breed){ %>
+            <option><%= breed.id%>:<%= breed.breed %></option>
+          <% }) %>
+    </select>
+    <br />
+    <select class="form-control form-control-sm" type="search" name="catteryInfo" class="input" id="catteryInfo" placeholder="Choose cattery">
+        <option selected>Choose Cattery</option>
+        <% catteries.forEach(function(cattery){ %>
+            <option><%= cattery.id%>:<%= cattery.name %></option>
+          <% }) %>
+    </select>
+  <input
+    type="submit"
+    value="Add Cattery in Breed"
+    class="btn btn-outline-primary btn-sm"
+  />
+</form>

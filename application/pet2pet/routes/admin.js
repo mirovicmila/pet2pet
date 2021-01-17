@@ -14,18 +14,81 @@ client.connect(function (err, result) {
   console.log("admin: cassandra connected");
 });
 var getAllCatteries = "SELECT * FROM pet2pet.cattery";
+var getAllBreeds = "SELECT * FROM pet2pet.breed";
+var getAllKittens = "SELECT * FROM pet2pet.kitten";
 
 router.get("/", function (req, res, next) {
+  var breedss, kittenss, catteriess;
   
   client.execute(getAllCatteries, [], function (err, result) {
     if (err) {
       res.status(404).send({ msg: err });
-    } else {
-      res.render("admin.ejs", {
-        catteries: result.rows,
-      });
+    } 
+    else {
+        catteriess = result.rows;
+        
+        client.execute(getAllBreeds, [], function (err, result) {
+            if (err) {
+              res.status(404).send({ msg: err });
+            } 
+            else {
+                breedss = result.rows;
+                
+                client.execute(getAllKittens, [], function (err, result) {
+                    if (err) {
+                      res.status(404).send({ msg: err });
+                    } 
+                    else {
+                        kittenss = result.rows;
+                        
+                        console.log("breeds:", breedss, "catteriess:", catteriess, "kittenss: ", kittenss);
+                        res.render("admin.ejs", {
+                            kittens: result.rows,
+                            breeds: breedss,
+                            catteries: catteriess
+                        });
+                    }
+                  });
+            }
+          });
     }
   });
 });
+
+router.post("/", function (req, res) {
+    id = cassandra.types.uuid();
+    var upsertBreed =
+      "INSERT INTO pet2pet.breed(id,breed, size, coat, color, description, image, lifespan, food) VALUES(?,?,?,?,?,?,?,?,?)";
+    client.execute(
+      upsertBreed,
+      [id, req.body.breed, req.body.size, req.body.coat, req.body.color, req.body.description, req.body.image, req.body.lifespan, req.body.food],
+      function (err, result) {
+        if (err) {
+          res.status(404).send({ msg: err });
+        } else {
+          console.log("Breed Added");
+          res.redirect("/admin");
+        }
+      }
+    );
+  });
+
+  /*router.post("/", function (req, res) {
+    id = cassandra.types.uuid();
+    var upsertBreed =
+      "INSERT INTO pet2pet.kitten(id,breed, size, coat, color, description, image, lifespan, food) VALUES(?,?,?,?,?,?,?,?,?)";
+    client.execute(
+      upsertBreed,
+      [id, req.body.breed, req.body.size, req.body.coat, req.body.color, req.body.description, req.body.image, req.body.lifespan, req.body.food],
+      function (err, result) {
+        if (err) {
+          res.status(404).send({ msg: err });
+        } else {
+          console.log("Breed Added");
+          res.redirect("/admin");
+        }
+      }
+    );
+  });*/
 
 module.exports = router;

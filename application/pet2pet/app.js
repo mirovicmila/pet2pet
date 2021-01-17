@@ -17,6 +17,8 @@ var addbreed = require("./routes/addbreed");
 var cattery = require ("./routes/cattery");
 var editcattery = require("./routes/editcattery")
 var addcattery = require("./routes/addcattery");
+var addkittencattery = require("./routes/addkittencattery");
+var addcatterybreed = require("./routes/addcatterybreed");
 
 var app = express();
 
@@ -43,6 +45,8 @@ app.use("/editbreed", editbreed);
 app.use("/kitten", kitten);
 app.use("/addkitten", addkitten);
 app.use("/editkitten", editkitten);
+app.use("/addcatterybreed", addcatterybreed);
+app.use("/addkittencattery", addkittencattery);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

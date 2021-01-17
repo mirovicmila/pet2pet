@@ -11,30 +11,53 @@ var client = new cassandra.Client({
 client.connect(function (err, result) {
   console.log("breed: cassandra connected");
 });
-var getCatteryById = "SELECT * FROM pet2pet.catteries WHERE id = ?";
+var getBreedById = "SELECT * FROM pet2pet.breed WHERE id = ?";
+var getAllCatteries = "SELECT * FROM pet2pet.catteryInBreed WHERE idbreed = ? ALLOW FILTERING";
 
-router.get("/breed/:id", function (req, res, next) {
+router.get("/:id", function (req, res, next) {
+    var idd, breedd, sizee, coatt, colorr, descriptionn, imagee, lifespann, foodd;
+    
     client.execute(getBreedById, [req.params.id], function (err, result) {
     if (err) {
       res.status(404).send({ msg: err });
-    } else {
-      res.render("breed.ejs", {
-        id: result.rows[0].id,
-        breed: result.rows[0].breed,
-        size: result.rows[0].size,
-        coat: result.rows[0].coat,
-        color: result.rows[0].color,
-        description: result.rows[0].description,
-        image: result.rows[0].image,
-        lifespan: result.rows[0].lifespan,
-        food: result.rows[0].food,
+    } 
+    else {
+      idd = result.rows[0].id;
+      breedd = result.rows[0].breed;
+      sizee = result.rows[0].size;
+      coatt = result.rows[0].coat;
+      colorr = result.rows[0].color;
+      descriptionn = result.rows[0].description;
+      imagee = result.rows[0].image;
+      lifespann = result.rows[0].lifespan;
+      foodd = result.rows[0].food;
+
+      client.execute(getAllCatteries, [req.params.id], function (err, result) {
+        if (err) {
+          res.status(404).send({ msg: err });
+        } 
+        else {
+          console.log("get catteries (breed):", result.rows);
+          res.render("breed.ejs", {
+            id: idd,
+            breed: breedd,
+            size: sizee,
+            coat: coatt,
+            color: colorr,
+            description: descriptionn,
+            image: imagee,
+            lifespan: lifespann,
+            food: foodd,
+            catteries: result.rows
+          });
+        }
       });
     }
   });
 });
 
 var deleteBreed = "DELETE FROM pet2pet.breed WHERE id = ?";
-router.delete("/breed/:id", function (req, res) {
+router.delete("/:id", function (req, res) {
   client.execute(deleteBreed, [req.params.id], function (err, result) {
     if (err) {
       res.status(404).send({ msg: err });

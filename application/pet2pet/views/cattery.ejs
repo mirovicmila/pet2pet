@@ -8,8 +8,16 @@
   <li>address: "<%= address%>"</li>
   <li>contact: "<%= contact%>"</li>
   <li>description: "<%= description%>"</li>
-  <li>workingHours: "<%= workingHours%>"</li>
+  <li>workingHours: "<%= workinghours%>"</li>
   <li>image: "<%= image%>"</li>
 </ul>
+
+<h3>Kittens</h3>
+  <% kittens.forEach(function(kitten){ %>
+  <li>
+    <a href="/kitten/<%= kitten.idkitten%>"><%= kitten.kittenname%></a>
+  </li>
+  <% }) %>
+
 <a class="editcattery" href="/editcattery/<%=id%>">Edit</a>
 <a class="deletecattery" href="" data-id="<%=id%>">Delete</a>

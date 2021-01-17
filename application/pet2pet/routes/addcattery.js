@@ -19,11 +19,13 @@ router.get("/", function (req, res, next) {
 
 //Add cattery POST
 router.post("/", function (req, res) {
+  id = cassandra.types.uuid();
+
   var upsertCattery =
-    "INSERT INTO pet2pet.cattery(name, address, contact, description, workinghours, image) VALUES(?,?,?,?,?,?,?)";
+    "INSERT INTO pet2pet.cattery(id, name, address, contact, description, workinghours, image) VALUES(?,?,?,?,?,?,?)";
   client.execute(
     upsertCattery,
-    [req.body.id, req.body.name, req.body.address, req.body.contact, req.body.description, req.body.workinghours, req.body.image],
+    [id, req.body.name, req.body.address, req.body.contact, req.body.description, req.body.workinghours, req.body.image],
     function (err, result) {
       if (err) {
         res.status(404).send({ msg: err });

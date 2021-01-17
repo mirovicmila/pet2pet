@@ -13,7 +13,7 @@ client.connect(function (err, result) {
 });
 var getCatteryById = "SELECT * FROM pet2pet.cattery WHERE id = ?";
 
-router.get("/cattery/:id", function (req, res, next) {
+router.get("/:id", function (req, res, next) {
   client.execute(getCatteryById, [req.params.id], function (err, result) {
     if (err) {
       res.status(404).send({ msg: err });

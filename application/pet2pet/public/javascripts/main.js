@@ -61,7 +61,7 @@ function deleteKitten() {
       type: "DELETE",
       url: "/kitten/" + $(".deletekitten").data("id"),
     }).done(function (response) {
-      window.location.replace("/admin");
+      window.location.replace("/");
     });
   } else {
     return false;

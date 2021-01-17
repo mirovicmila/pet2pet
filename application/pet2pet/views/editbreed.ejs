@@ -3,10 +3,10 @@
 <% include ../views/layout %>
 
 <h1>Edit Breed Info</h1>
-<form name="edituser" method="POST" action="/editbreed">
+<form name="editbreed" method="POST" action="/editbreed">
     <input type="text" name="id" placeholder="id" value="<%= id%>" hidden="true" />
     <br />
-    <input type="email" name="breed" placeholder="breed" value="<%= breed%>" />
+    <input type="text" name="breed" placeholder="breed" value="<%= breed%>" />
     <br />
     <input type="text" name="size" placeholder="size" value="<%= size%>" />
     <br />

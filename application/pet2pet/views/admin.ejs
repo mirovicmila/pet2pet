@@ -1,14 +1,32 @@
 <% include ../views/layout %>
-<h1 class="display-1">Catteries</h1>
+<h1 class="display-1">Admin preview</h1>
 <ul>
+    <h3>Catteries</h3>
   <% catteries.forEach(function(cattery){ %>
   <li>
     <a href="/cattery/<%=cattery.id%>"><%=cattery.name%></a>
   </li>
   <% }) %>
+  <h3>Breeds</h3> 
   <br />
+  <% breeds.forEach(function(breed){ %>
+    <li>
+      <a href="/breed/<%=breed.id%>"><%=breed.breed%></a>
+    </li>
+    <% }) %>
+    <br />
+    <h3>Kittens</h3>
+    <% kittens.forEach(function(kitten){ %>
+      <li>
+        <a href="/kitten/<%=kitten.id%>"><%=kitten.name%></a>
+      </li>
+      <% }) %>
+      <br />
   <a href="/addcattery" class="btn btn-primary" >Add Cattery </a>
   <a href="/addbreed" class="btn btn-primary" >Add Breed </a>
   <a href="/addkitten" class="btn btn-primary" >Add Kitten </a>
-  
+  <br />
+  <br/>
+  <a href="/addcatterybreed" class="btn btn-primary" >Add Cattery Breed </a>
+  <a href="/addkittencattery" class="btn btn-primary" >Add Kitten Cattery </a>
 </ul>

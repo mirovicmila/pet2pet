@@ -9,6 +9,15 @@
   <li>image: "<%= image%>"</li>
   <li>lifespan: "<%= lifespan%>"</li>
   <li>food: "<%= food%>"</li>
+
+  <h3>Catteries</h3>
+  <% catteries.forEach(function(cattery){ %>
+  <li>
+    <a href="/cattery/<%= cattery.idcattery%>"><%= cattery.catteryname%></a>
+  </li>
+  <% }) %>
+
+  <% console.log("odgajivacnice", catteries[0].catteryname); %>
 </ul>
 <a class="editbreed" href="/editbreed/<%=id%>">Edit</a>
 

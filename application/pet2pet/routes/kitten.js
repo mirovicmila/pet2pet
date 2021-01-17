@@ -15,7 +15,7 @@ client.connect(function (err, result) {
 var getKittenById = "SELECT * FROM pet2pet.kitten WHERE id = ?";
 //<!-- id, name, birthday, mom, dad, gender, description, price, available -->
 
-router.get("/kitten/:id", function (req, res, next) {
+router.get("/:id", function (req, res, next) {
     
     client.execute(getKittenById, [req.params.id], function (err, result) {
     if (err) {
@@ -37,7 +37,7 @@ router.get("/kitten/:id", function (req, res, next) {
 });
 
 var deleteKitten = "DELETE FROM pet2pet.kitten WHERE id = ?";
-router.delete("/kitten/:id", function (req, res) {
+router.delete("/:id", function (req, res) {
   client.execute(deleteKitten, [req.params.id], function (err, result) {
     if (err) {
       res.status(404).send({ msg: err });

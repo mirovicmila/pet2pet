@@ -14,7 +14,7 @@ client.connect(function (err, result) {
 var getKittenById = "SELECT * FROM pet2pet.kitten WHERE id = ?";
 //<!-- id, name, birthday, mom, dad, gender, description, price, available -->
 
-router.get("/kitten/:id", function (req, res, next) {
+router.get("/:id", function (req, res, next) {
   client.execute(getKittenById, [req.params.id], function (err, result) {
     if (err) {
       res.status(404).send({ msg: err });
@@ -36,7 +36,7 @@ router.get("/kitten/:id", function (req, res, next) {
 });
 
 //Edit kitten
-router.post("/kitten/:id", function (req, res) {
+router.post("/", function (req, res) {
   var upsertKitten =
     "INSERT INTO pet2pet.kitten(id, name, birthday, mom, dad, gender, description, price, available) VALUES(?,?,?,?, ?, ?, ?, ?, ?)";
   client.execute(
@@ -46,7 +46,7 @@ router.post("/kitten/:id", function (req, res) {
       if (err) {
         res.status(404).send({ msg: err });
       } else {
-         res.redirect("/kitten/" + req.body.id);
+         res.redirect("/");
       }
     }
   );
