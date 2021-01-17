@@ -9,3 +9,5 @@ create keyspace "pet2pet" with replication = {'class':'SimpleStrategy', 'replica
 create table breed(id uuid PRIMARY KEY, breed text, size text, coat text, color text, description text, image text, lifespan text, food text);
 create table cattery(id uuid PRIMARY KEY, name text, address text, contact text, description text, workinghours text, image text);
 create table kitten(id uuid PRIMARY KEY, name text, mom text, dad text, gender text, available text);
+create table catteryInBreed(id uuid PRIMARY KEY, idBreed uuid, breedName text, idCattery uuid, catteryName text);
+create table kittenInCattery(id uuid PRIMARY KEY, idCattery uuid, catteryName text, idKitten uuid, kittenName text);
