@@ -1,0 +1,15 @@
+<!-- id, name, address, contact, description, workinghours, image -->
+
+<% include ../views/layout %>
+<h1>Cattery Profile</h1>
+<ul>
+  <li>id: "<%= id%>"</li>
+  <li>name: "<%= name%>"</li>
+  <li>address: "<%= address%>"</li>
+  <li>contact: "<%= contact%>"</li>
+  <li>description: "<%= description%>"</li>
+  <li>workingHours: "<%= workingHours%>"</li>
+  <li>image: "<%= image%>"</li>
+</ul>
+<a class="editcattery" href="/editcattery/<%=id%>">Edit</a>
+<a class="deletecattery" href="" data-id="<%=id%>">Delete</a>

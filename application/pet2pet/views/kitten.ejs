@@ -1,0 +1,18 @@
+<!-- id, name, birthday, mom, dad, gender, description, price, available -->
+
+<% include ../views/layout %>
+<h1>Kitten</h1>
+<ul>
+  <li>id: "<%= id%>"</li>
+  <li>name: "<%= name%>"</li>
+  <li>birthday: "<%= birthday%>"</li>
+  <li>mom: "<%= mom%>"</li>
+  <li>dad: "<%= dad%>"</li>
+  <li>gender: "<%= gender%>"</li>
+  <li>description: "<%= description%>"</li>
+  <li>price: "<%= price%>"</li>
+  <li>available: "<%= available%>"</li>
+</ul>
+<a class="editkitten" href="/editkitten/<%=id%>">Edit</a>
+
+<a class="deletekitten" href="" data-id="<%=id%>">Delete</a>

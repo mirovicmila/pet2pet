@@ -1,0 +1,33 @@
+<% include ../views/layout %>
+<!-- id, name, birthday, mom, dad, gender, description, price, available -->
+
+<h1 class="display-1">Add Breed</h1>
+<form method="POST" action="/addbreed">
+    <input type="text" name="id" placeholder="id" />
+    <br />
+    <input type="text" name="name" placeholder="name" />
+    <br />
+    <input type="text" name="birthday" placeholder="birthday" />
+    <br />
+    <input type="text" name="mom" placeholder="mom" />
+    <br />
+    <input type="text" name="dad" placeholder="dad" />
+    <br />
+    <input type="text" name="gender" placeholder="gender" />
+    <br />
+    <input type="text" name="description" placeholder="description" />
+    <br />
+    <input type="text" name="price" placeholder="price" />
+    <br />
+    <input type="text" name="available" placeholder="available" />
+    <br />
+    <br/>
+    <small class="text-muted">You are creating a kitten...</small>
+    <br />
+    <br />
+  <input
+    type="submit"
+    value="Add User"
+    class="btn btn-outline-primary btn-sm"
+  />
+</form>

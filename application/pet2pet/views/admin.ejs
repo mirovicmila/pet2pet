@@ -1,0 +1,14 @@
+<% include ../views/layout %>
+<h1 class="display-1">Catteries</h1>
+<ul>
+  <% catteries.forEach(function(cattery){ %>
+  <li>
+    <a href="/cattery/<%=cattery.id%>"><%=cattery.name%></a>
+  </li>
+  <% }) %>
+  <br />
+  <a href="/addcattery" class="btn btn-primary" >Add Cattery </a>
+  <a href="/addbreed" class="btn btn-primary" >Add Breed </a>
+  <a href="/addkitten" class="btn btn-primary" >Add Kitten </a>
+  
+</ul>

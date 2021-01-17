@@ -1,0 +1,15 @@
+<% include ../views/layout %>
+<h1>Breed</h1>
+<ul>
+  <li>id: "<%= id%>"</li>
+  <li>breed: "<%= breed%>"</li>
+  <li>size: "<%= size%>"</li>
+  <li>coat: "<%= coat%>"</li>
+  <li>description: "<%= description%>"</li>
+  <li>image: "<%= image%>"</li>
+  <li>lifespan: "<%= lifespan%>"</li>
+  <li>food: "<%= food%>"</li>
+</ul>
+<a class="editbreed" href="/editbreed/<%=id%>">Edit</a>
+
+<a class="deletebreed" href="" data-id="<%=id%>">Delete</a>

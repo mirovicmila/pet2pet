@@ -1,0 +1,22 @@
+<% include ../views/layout %>
+<!-- id, name, address, contact, description, workinghours, image -->
+<h1 class="display-1">Add Cattery</h1>
+<form method="POST" action="/addcattery">
+    <input type="text" name="name" placeholder="Name" />
+    <br />
+    <input type="text" name="address" placeholder="Address" />
+    <br />
+    <input type="text" name="contact" placeholder="Contact" />
+    <br />
+    <input type="text" name="description" placeholder="description" />
+    <br />
+    <input type="text" name="workingHours" placeholder="Working hours" />
+    <br/>
+    <input type="text" name="image" placeholder="Image" />
+    <br />
+  <input
+    type="submit"
+    value="Add Cattery"
+    class="btn btn-outline-primary btn-sm"
+  />
+</form>

@@ -1,0 +1,25 @@
+<!-- id, name, birthday, mom, dad, gender, description, price, available -->
+<% include ../views/layout %>
+
+<h1>Edit Kitten Info</h1>
+<form name="editkitten" method="POST" action="/editkitten">
+    <input type="text" name="id" placeholder="id" value="<%= id%>" hidden="true" />
+    <br />
+    <input type="email" name="name" placeholder="name" value="<%= name%>" />
+    <br />
+    <input type="text" name="birthday" placeholder="birthday" value="<%= birthday%>" />
+    <br />
+    <input type="text" name="mom" placeholder="mom" value="<%= mom%>" />
+    <br />
+    <input type="text" name="dad" placeholder="dad" value="<%= dad%>" />
+    <br />
+    <input type="text" name="gender" placeholder="gender" value="<%= gender%>" />
+    <br />
+    <input type="text" name="description" placeholder="coat" value="<%= coat%>" />
+    <br />
+    <input type="text" name="price" placeholder="price" value="<%= price%>" />
+    <br />
+    <input type="text" name="available" placeholder="available" value="<%= available%>" />
+    <br />
+    <input type="submit" value="Edit Kitten" class="btn btn-outline-primary btn-sm" />
+</form>

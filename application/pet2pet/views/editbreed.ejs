@@ -1,0 +1,24 @@
+<!-- id, breed, size, coat, color, description, image, lifespan, food -->
+
+<% include ../views/layout %>
+
+<h1>Edit Breed Info</h1>
+<form name="edituser" method="POST" action="/editbreed">
+    <input type="text" name="id" placeholder="id" value="<%= id%>" hidden="true" />
+    <br />
+    <input type="email" name="breed" placeholder="breed" value="<%= breed%>" />
+    <br />
+    <input type="text" name="size" placeholder="size" value="<%= size%>" />
+    <br />
+    <input type="text" name="coat" placeholder="coat" value="<%= coat%>" />
+    <br />
+    <input type="text" name="description" placeholder="description" value="<%= description%>" />
+    <br />
+    <input type="text" name="image" placeholder="image" value="<%= image%>" />
+    <br />
+    <input type="text" name="lifespan" placeholder="lifespan" value="<%= lifespan%>" />
+    <br />
+    <input type="text" name="food" placeholder="food" value="<%= food%>" />
+    <br />
+    <input type="submit" value="Edit Breed" class="btn btn-outline-primary btn-sm" />
+</form>
