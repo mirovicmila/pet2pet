@@ -1,6 +1,13 @@
 <!-- id, name, address, contact, description, workinghours, image -->
 
 <% include ../views/layout %>
+<script
+  src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""
+></script>
+<script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+<link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
 <h1>Cattery Profile</h1>
 <ul>
   <li>id: "<%= id%>"</li>
@@ -11,7 +18,37 @@
   <li>workingHours: "<%= workinghours%>"</li>
   <li>image: "<%= image%>"</li>
 </ul>
+<style>
+  #map {
+      width: 900px;
+      height:400px;
+  }
+</style>    
+<br/>
+<div id="map" class="w-100"></div>       
+<script type="text/javascript">
+window.onload = function() {
+  L.mapquest.key = 'xZkpUhDeKCi3xZfhJVuTc52uc7s6tjN9';
 
+  L.mapquest.geocoding().geocode('<%= address%>', createMap);
+
+  function createMap(error, response) {
+    var location = response.results[0].locations[0];
+    var latLng = location.displayLatLng;
+    var map = L.mapquest.map('map', {
+      center: latLng,
+      layers: L.mapquest.tileLayer('map'),
+      zoom: 14
+    });
+    var marker = L.marker(latLng).addTo(map);
+    var popup = L.popup()
+    .setLatLng(latLng)
+    .setContent("<%= name%>")
+    .openOn(map);
+  }
+
+}
+</script>
 <h3>Kittens</h3>
   <% kittens.forEach(function(kitten){ %>
   <li>

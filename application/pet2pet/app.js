@@ -6,6 +6,7 @@ var logger = require("morgan");
 var cassandra = require("cassandra-driver");
 var bodyParser = require('body-parser');
 
+
 var indexRouter = require("./routes/index");
 var admin = require("./routes/admin");
 var kitten = require("./routes/kitten");
@@ -21,6 +22,7 @@ var addkittencattery = require("./routes/addkittencattery");
 var addcatterybreed = require("./routes/addcatterybreed");
 
 var app = express();
+
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
