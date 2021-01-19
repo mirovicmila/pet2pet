@@ -18,7 +18,7 @@ var getKittens = "SELECT * FROM pet2pet.kitten";
 
 router.get("/:id", function (req, res, next) {
   var idd, namee, addresss, contactt, descriptionn, workinghourss, imagee;
-  console.log("GET CATTERY");
+  //console.log("GET CATTERY");
 
   var svimacici;
   client.execute(getKittens, function (err, result) {
@@ -28,7 +28,7 @@ router.get("/:id", function (req, res, next) {
     else 
     {
       svimacici = result.rows;
-      console.log("svimacici", svimacici);
+      //console.log("svimacici", svimacici);
   client.execute(getCatteryById, [req.params.id], function (err, result) {
     if (err) {
       res.status(404).send({ msg: err });
@@ -48,20 +48,20 @@ router.get("/:id", function (req, res, next) {
             res.status(404).send({ msg: err });
           } 
           else {
-            console.log("get kittens (cattery):", result.rows);
+            //console.log("get kittens (cattery):", result.rows);
             var macici = result.rows;
             var tacnimacici = [];
             macici.forEach(function(m) {
-              console.log("mace:", m);
+              //console.log("mace:", m);
               svimacici.forEach(function(sm){
-                console.log("id - idkitten", sm.id.toString(), m.idkitten.toString());
+                //console.log("id - idkitten", sm.id.toString(), m.idkitten.toString());
                 if(sm.id.toString() == m.idkitten.toString())
                 {
                   tacnimacici.push(m);
                 }
               })
             });
-            console.log("tacnimacici", tacnimacici);
+            //console.log("tacnimacici", tacnimacici);
             res.render("cattery.ejs", {
               id: idd,
               name: namee,

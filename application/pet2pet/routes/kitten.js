@@ -11,7 +11,6 @@ var client = new cassandra.Client({
 client.connect(function (err, result) {
   console.log("kitten: cassandra connected");
 });
-//console.log(jesteadmin);
 var getKittenById = "SELECT * FROM pet2pet.kitten WHERE id = ?";
 //<!-- id, name, birthday, mom, dad, gender, description, price, available -->
 

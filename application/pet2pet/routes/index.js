@@ -38,7 +38,7 @@ router.get("/", function (req, res, next) {
                     else {
                         kittenss = result.rows;
                         
-                        console.log("breeds:", breedss, "catteriess:", catteriess, "kittenss: ", kittenss);
+                        //console.log("breeds:", breedss, "catteriess:", catteriess, "kittenss: ", kittenss);
                         res.render("index.ejs", {
                             kittens: result.rows,
                             breeds: breedss,
