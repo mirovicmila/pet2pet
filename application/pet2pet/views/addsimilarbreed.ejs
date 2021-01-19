@@ -1,0 +1,24 @@
+<% include ../views/layout %>
+<!-- id | idfirst | idsecond | namefirst | namesecond -->
+
+<h1 class="display-1">Add similar Breed</h1>
+<form name="addsimilarbreed" method="POST" action="/addsimilarbreed">
+    <select class="form-control form-control-sm" type="search" name="firstInfo" class="input" id="firstInfo" placeholder="Choose first breed" required>
+        <option selected>Choose First Breed</option>
+        <% first.forEach(function(f){ %>
+            <option><%= f.id%>:<%= f.breed %></option>
+          <% }) %>
+    </select>
+    <br />
+    <select class="form-control form-control-sm" type="search" name="secondInfo" class="input" id="secondInfo" placeholder="Choose second breed" required>
+        <option selected>Choose Second Breed</option>
+        <% second.forEach(function(s){ %>
+            <option><%= s.id%>:<%= s.breed %></option>
+          <% }) %>
+    </select>
+  <input
+    type="submit"
+    value="Add similar Breed"
+    class="btn btn-outline-primary btn-sm"
+  />
+</form>

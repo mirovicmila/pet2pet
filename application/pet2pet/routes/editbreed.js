@@ -28,7 +28,12 @@ router.get("/:id", function (req, res, next) {
         description: result.rows[0].description,
         image: result.rows[0].image,
         lifespan: result.rows[0].lifespan,
-        food: result.rows[0].food
+        food: result.rows[0].food,
+        activitylevel: result.rows[0].activitylevel,
+        playfulness: result.rows[0].playfulness,
+        friendliness: result.rows[0].friendliness,
+        intelligence: result.rows[0].intelligence,
+        independence: result.rows[0].independence
       });
     }
   });
@@ -37,10 +42,10 @@ router.get("/:id", function (req, res, next) {
 //Edit breed
 router.post("/", function (req, res) {
   var upsertBreed =
-    "INSERT INTO pet2pet.breed(id, breed, size, coat, color, description, image, lifespan, food) VALUES(?,?,?,?,?,?,?,?,?)";
+    "INSERT INTO pet2pet.breed(id, breed, size, coat, color, description, image, lifespan, food, activitylevel, playfulness, friendliness, intelligence, independence) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
   client.execute(
     upsertBreed,
-    [req.body.id, req.body.breed, req.body.size, req.body.coat, req.body.color,req.body.description, req.body.image, req.body.lifespan, req.body.food],
+    [req.body.id, req.body.breed, req.body.size, req.body.coat, req.body.color,req.body.description, req.body.image, req.body.lifespan, req.body.food, req.body.activitylevel, req.body.playfulness, req.body.friendliness, req.body.intelligence, req.body.independence],
     function (err, result) {
       if (err) {
         res.status(404).send({ msg: err });

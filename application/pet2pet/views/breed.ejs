@@ -1,24 +1,308 @@
 <% include ../views/layout %>
-<h1>Breed</h1>
-<ul>
-  <li>id: "<%= id%>"</li>
-  <li>breed: "<%= breed%>"</li>
-  <li>size: "<%= size%>"</li>
-  <li>coat: "<%= coat%>"</li>
-  <li>description: "<%= description%>"</li>
-  <li>image: "<%= image%>"</li>
-  <li>lifespan: "<%= lifespan%>"</li>
-  <li>food: "<%= food%>"</li>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  </head>
+  <body>
+  
+    <section class="hero is-warning is-fixed-top">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            <%= breed %>
+          </h1>
+          <h2 class="subtitle">
+            Breed
+          </h2>
+        </div>
+      </div>
+    </section>
+    <br />
 
-  <h3>Catteries</h3>
+    <div class="container container-fluid">
+      <div class="row">
+      <div class="card rounded-lg"><img id="slika" src="<%=image%>" class="slika rounded-lg mx-auto d-block"/></div>
+      <br/>
+      <div class="card mx-auto my-auto" >
+        <div class="card-content">
+          <div class="content">
+            <div class="d-flex flex-row justify-content-between">
+              <i class="fas fa-paw align-self-center d-flex flex-row"><p class="lead text-muted pl-3">  Breed: </p></i>
+              <p class="lead"> <%=breed%></p>
+            </div>
+            <div class="d-flex flex-row justify-content-between">
+              <i class="fas fa-search-plus align-self-center d-flex flex-row"><p class="lead text-muted pl-3">  Size: </p></i>
+              <p class="lead"> <%=size%></p>
+            </div>
+            <div class="d-flex flex-row justify-content-between">
+              <i class="fas fa-cat align-self-center d-flex flex-row"><p class="lead text-muted pl-2">  Coat: </p></i>
+              <p class="lead"> <%=coat%></p>
+            </div>
+            <div class="d-flex flex-row justify-content-between">
+              <i class="fas fa-hourglass-half align-self-center d-flex flex-row"><p class="lead text-muted pl-3">  Lifespan: </p></i>
+              <p class="lead"> <%=lifespan%></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <br />
+      <br/>
+      <hr class="bg-warning" style="opacity: 30%;">
+      <br/>
+      <div class="card p-3 w-50 mx-auto" style="background-color: #b3e0e3;">
+      <div class="d-flex flex-row justify-content-between">
+      <div class="mx-2" style="width:300px;background-color: #b3e0e3;"><p class="lead text-light font-weight-bold">Activity level: </p></div>
+      <div class="border border-light d-flex flex-row mx-auto p-0 rounded-lg" style="height: 31px;width: 200px;">
+        <% if(activitylevel == "0") { %>
+        <% } %>
+        <% if(activitylevel == "1") { %>
+          <div class="w-25 mx-0  rounded-left" style="height: 30px;background-color: #c14953;"></div>
+          <div class="w-25 mx-0" style="height: 30px;"></div>
+          <div class="w-25 mx-0" style="height: 30px;"></div>
+          <div class="w-25 mx-0" style="height: 30px;"></div>
+        <% } %>
+        <% if(activitylevel == "2") { %>
+          <div class="w-25 mx-0 rounded-left border-light border-right" style="height: 30px;background-color: #ae89b2;"></div>
+          <div class="w-25 mx-0" style="height: 30px;background-color: #ae89b2;"></div>
+          <div class="w-25 mx-0 rounded-lg" style="height: 30px;"></div>
+          <div class="w-25 mx-0 rounded-lg" style="height: 30px;"></div>
+        <% } %>
+        <% if(activitylevel == "3") { %>
+          <div class="w-25 mx-0 rounded-left border-light border-right" style="height: 30px;background-color: #ffdd57;"></div>
+          <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #ffdd57;"></div>
+          <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #ffdd57;"></div>
+          <div class="w-25 mx-0 rounded-right" style="height: 30px;"></div>
+        <% } %>
+        <% if(activitylevel >= "4") {%>
+          <div class="w-25 mx-0 rounded-left border-light border-right" style="height: 30px;background-color: #f7c1bb;"></div>
+          <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #f7c1bb;"></div>
+          <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #f7c1bb;"></div>
+          <div class="w-25 mx-0 rounded-right" style="height: 30px;background-color: #f7c1bb;"></div>
+        <% } %>
+      </div>
+      </div>
+      <br/>
+      <div class="d-flex flex-row justify-content-between">
+        <div class="mx-2" style="width:300px;background-color: #b3e0e3;"><p class="lead text-light font-weight-bold">Playfulness: </p></div>
+        <div class="border border-light d-flex flex-row mx-auto p-0 rounded-lg" style="height: 31px; width: 200px;">
+          <% if(playfulness == "0") { %>
+          <% } %>
+          <% if(playfulness == "1") { %>
+            <div class="w-25 mx-0 rounded-left" style="height: 30px;background-color: #c14953;"></div>
+            <div class="w-25 mx-0" style="height: 30px;"></div>
+            <div class="w-25 mx-0" style="height: 30px;"></div>
+            <div class="w-25 mx-0" style="height: 30px;"></div>
+          <% } %>
+          <% if(playfulness == "2") { %>
+            <div class="w-25 mx-0 rounded-left border-light border-right" style="height: 30px;background-color: #ae89b2;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #ae89b2;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;"></div>
+            <div class="w-25 mx-0 rounded-lg" style="height: 30px;"></div>
+          <% } %>
+          <% if(playfulness == "3") { %>
+            <div class="w-25 mx-0 rounded-left border-light border-right" style="height: 30px;background-color: #ffdd57;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #ffdd57;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #ffdd57;"></div>
+            <div class="w-25 mx-0 rounded-lg" style="height: 30px;"></div>
+          <% } %>
+          <% if(playfulness >= "4") {%>
+            <div class="w-25 mx-0 rounded-left border-light border-right" style="height: 30px;background-color: #f7c1bb;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #f7c1bb;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #f7c1bb;"></div>
+            <div class="w-25 mx-0 rounded-right" style="height: 30px;background-color: #f7c1bb;"></div>
+          <% } %>
+        </div>
+      </div>
+      <br/>
+      <div class="d-flex flex-row justify-content-between">
+        <div class="mx-2" style="width:300px;background-color: #b3e0e3;"><p class="lead text-light font-weight-bold">Friendliness: </p></div>
+        <div class="border border-light d-flex flex-row mx-auto p-0 rounded-lg" style="height: 31px; width: 200px;">
+          <% if(friendliness == "0") { %>
+          <% } %>
+          <% if(friendliness == "1") { %>
+            <div class="w-25 mx-0 rounded-left" style="height: 30px;background-color: #c14953;"></div>
+            <div class="w-25 mx-0" style="height: 30px;"></div>
+            <div class="w-25 mx-0" style="height: 30px;"></div>
+            <div class="w-25 mx-0" style="height: 30px;"></div>
+          <% } %>
+          <% if(friendliness == "2") { %>
+            <div class="w-25 mx-0 rounded-left border-light border-right" style="height: 30px;background-color: #ae89b2;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #ae89b2;"></div>
+            <div class="w-25 mx-0 " style="height: 30px;"></div>
+            <div class="w-25 mx-0 " style="height: 30px;"></div>
+          <% } %>
+          <% if(friendliness == "3") { %>
+            <div class="w-25 mx-0 rounded-left border-light border-right" style="height: 30px;background-color: #ffdd57;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #ffdd57;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #ffdd57;"></div>
+            <div class="w-25 mx-0 " style="height: 30px;"></div>
+          <% } %>
+          <% if(friendliness >= "4") {%>
+            <div class="w-25 mx-0 rounded-left border-light border-right" style="height: 30px;background-color: #f7c1bb;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #f7c1bb;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #f7c1bb;"></div>
+            <div class="w-25 mx-0 rounded-right" style="height: 30px;background-color: #f7c1bb;"></div>
+          <% } %>
+        </div>
+      </div>
+      <br/>
+      <div class="d-flex flex-row justify-content-between">
+        <div class="mx-2" style="width:300px;background-color: #b3e0e3;"><p class="lead text-light font-weight-bold">Independence: </p></div>
+        <div class="border border-light d-flex flex-row mx-auto p-0 rounded-lg" style="height: 31px; width: 200px;">
+          <% if(independence == "0") { %>
+          <% } %>
+          <% if(independence == "1") { %>
+            <div class="w-25 mx-0 rounded-left" style="height: 30px;background-color: #c14953;"></div>
+            <div class="w-25 mx-0" style="height: 30px;"></div>
+            <div class="w-25 mx-0" style="height: 30px;"></div>
+            <div class="w-25 mx-0" style="height: 30px;"></div>
+          <% } %>
+          <% if(independence == "2") { %>
+            <div class="w-25 mx-0 rounded-left border-light border-right" style="height: 30px;background-color: #ae89b2;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #ae89b2;"></div>
+            <div class="w-25 mx-0 " style="height: 30px;"></div>
+            <div class="w-25 mx-0 " style="height: 30px;"></div>
+          <% } %>
+          <% if(independence == "3") { %>
+            <div class="w-25 mx-0 rounded-left border-light border-right" style="height: 30px;background-color: #ffdd57;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #ffdd57;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #ffdd57;"></div>
+            <div class="w-25 mx-0" style="height: 30px;"></div>
+          <% } %>
+          <% if(independence >= "4") {%>
+            <div class="w-25 mx-0 rounded-left border-light border-right" style="height: 30px;background-color: #f7c1bb;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #f7c1bb;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #f7c1bb;"></div>
+            <div class="w-25 mx-0 rounded-right" style="height: 30px;background-color: #f7c1bb;"></div>
+          <% } %>
+        </div>
+      </div>
+      <br/>
+      <div class="d-flex flex-row justify-content-between">
+        <div class="mx-2" style="width:300px;background-color: #b3e0e3;"><p class="lead text-light font-weight-bold">Intelligence: </p></div>
+        <div class="border border-light d-flex flex-row mx-auto p-0 rounded-lg" style="height: 31px; width: 200px;">
+          <% if(intelligence == "0") { %>
+          <% } %>
+          <% if(intelligence == "1") { %>
+            <div class="w-25 mx-0 rounded-left border-light border-right" style="height: 30px;background-color: #c14953;"></div>
+            <div class="w-25 mx-0" style="height: 30px;"></div>
+            <div class="w-25 mx-0" style="height: 30px;"></div>
+            <div class="w-25 mx-0" style="height: 30px;"></div>
+          <% } %>
+          <% if(intelligence == "2") { %>
+            <div class="w-25 mx-0 rounded-left border-light border-right" style="height: 30px;background-color: #ae89b2;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #ae89b2;"></div>
+            <div class="w-25 mx-0" style="height: 30px;"></div>
+            <div class="w-25 mx-0" style="height: 30px;"></div>
+          <% } %>
+          <% if(intelligence == "3") { %>
+            <div class="w-25 mx-0 rounded-left border-light border-right" style="height: 30px;background-color: #ffdd57;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #ffdd57;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #ffdd57;"></div>
+            <div class="w-25 mx-0" style="height: 30px;"></div>
+          <% } %>
+          <% if(intelligence >= "4") {%>
+            <div class="w-25 mx-0 rounded-left border-light border-right" style="height: 30px;background-color: #f7c1bb;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #f7c1bb;"></div>
+            <div class="w-25 mx-0 border-light border-right" style="height: 30px;background-color: #f7c1bb;"></div>
+            <div class="w-25 mx-0 rounded-right" style="height: 30px;background-color: #f7c1bb;"></div>
+          <% } %>
+        </div>
+      </div>
+      </div>
+      <br/>
+      <h3 class="display-4 has-text-warning">Description</h3>
+      <br/>
+      <div class="d-flex flex-row justify-content-between">
+        <p class="lead"> <%=description%></p>
+      </div>
+      <br/>
+      <h3 class="ml-4 display-4 has-text-warning">Color</h3>
+      <br/>
+      <div class="ml-4 d-flex flex-row justify-content-between">
+        <p class="ml-4 lead"> <%=color%></p>
+      </div>
+      <br/>
+      <h3 class="display-4 text-warning">Best food for <%=breed%></h3>
+      <br/>
+      <div class="d-flex flex-row justify-content-between">
+        <p class="lead"> <%=food%></p>
+      </div>
+      <br/>
+  <h3 class="display-4 text-info">Catteries</h3>
+  <% if(catteries.length == 0) { %>
+    <p class="lead">There are no catteries available...</p>
+  <% } %>
+  <div class="row">
   <% catteries.forEach(function(cattery){ %>
-  <li>
-    <a href="/cattery/<%= cattery.idcattery%>"><%= cattery.catteryname%></a>
-  </li>
+    <div class="card card3 m-4" style="width: 18rem;">
+      <div class="card-body d-flex flex-column align-items-center">
+        <h5 class="card-header lead text-light w-100"><%=cattery.catteryname%></h5>
+        <br />
+        <a href="/cattery/<%= cattery.idcattery%>" class="btn btn-light stretched-link">Visit</a>
+      </div>
+    </div>
   <% }) %>
+  </div>
+  <br />
+  <h3 class="display-4 text-info">Similar breeds</h3>
+  <% if(similarBreeds.length == 0) { %>
+    <p class="lead">There are no similar breeds...</p>
+  <% } %>
+  <div class="row">
+    <% similarBreeds.forEach(function(s){ %>
+      <div class="card card2 m-4" style="width: 18rem;">
+        <div class="card-body d-flex flex-column align-items-center">
+          <h5 class="card-header lead text-light w-100"><%=s.namesecond%></h5>
+          <br />
+          <a href="/breed/<%= s.idsecond%>" class="btn btn-light stretched-link">Visit</a>
+        </div>
+      </div>
+    <% }) %>
 
-  <% console.log("odgajivacnice", catteries[0].catteryname); %>
-</ul>
-<a class="editbreed" href="/editbreed/<%=id%>">Edit</a>
+    <% secondSimilarBreeds.forEach(function(s){ %>
+      <div class="card card2 m-4" style="width: 18rem; ">
+        <div class="card-body d-flex flex-column align-items-center">
+          <h5 class="card-header lead text-light w-100"><%=s.namefirst%></h5>
+          <br/>
+          <a href="/breed/<%= s.idfirst%>" class="btn btn-light stretched-link">Visit</a>
+        </div>
+      </div>
+    <% }) %>
+  </div>
 
-<a class="deletebreed" href="" data-id="<%=id%>">Delete</a>
+  <div class="card mx-auto w-25 d-flex flex-row justify-content-around p-4">
+    <button class="btn btn-primary"><a class="editbreed text-light" href="/editbreed/<%=id%>">Edit breed</a></button>
+    <button class="btn btn-danger"><a class="deletebreed text-light" href="" data-id="<%=id%>">Delete breed</a></button>
+  </div>
+  <br/>
+</div>
+
+<style>
+  .card2 {
+    background-color: #ddbea9;
+  }
+  .card2:hover {
+    background-color: #a5a58d;
+  }
+  .card3 {
+    background-color: #00b4d8;
+  }
+  .card3:hover {
+    background-color: #48cae4;
+  }
+  .slika {
+    opacity: 100%;
+  }
+  .slika:hover{
+    opacity: 80%;
+  }
+</style>
+
+<script>
+
+</script>

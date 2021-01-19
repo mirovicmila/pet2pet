@@ -30,7 +30,8 @@ router.get("/:id", function (req, res, next) {
         gender: result.rows[0].gender,
         description: result.rows[0].description,
         price: result.rows[0].price,
-        available: result.rows[0].available
+        available: result.rows[0].available,
+        image: result.rows[0].image
       });
     }
   });

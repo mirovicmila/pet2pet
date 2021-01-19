@@ -2,21 +2,31 @@
 <!-- id, breed, size, coat, color, description, image, lifespan, food -->
 <h1 class="display-1">Add Breed</h1>
 <form method="POST" action="/addbreed">
-    <input type="text" name="breed" placeholder="breed" />
+    <input type="text" name="breed" placeholder="breed" required />
     <br />
-    <input type="text" name="size" placeholder="size" />
+    <input type="text" name="size" placeholder="size" required/>
     <br />
-    <input type="text" name="coat" placeholder="coat" />
+    <input type="text" name="coat" placeholder="coat" required/>
     <br />
-    <input type="text" name="color" placeholder="color" />
+    <input type="text" name="color" placeholder="color"required />
     <br />
-    <input type="text" name="description" placeholder="description" />
+    <input type="text" name="description" placeholder="description" required />
     <br />
-    <input type="text" name="image" placeholder="image" />
+    <input type="text" name="image" placeholder="image"required />
     <br />
-    <input type="text" name="lifespan" placeholder="lifespan" />
+    <input type="text" name="lifespan" placeholder="lifespan" required />
     <br />
-    <input type="text" name="food" placeholder="food" />
+    <input type="text" name="food" placeholder="food" required/>
+    <br />
+    <input type="text" name="activitylevel" placeholder="activitylevel" required/>
+    <br />
+    <input type="number" name="playfulness" placeholder="playfulness" required />
+    <br />
+    <input type="number" name="friendliness" placeholder="friendliness" required/>
+    <br />
+    <input type="number" name="intelligence" placeholder="intelligence" required/>
+    <br />
+    <input type="number" name="independence" placeholder="independence" required/>
     <br />
     <br/>
     <small class="text-muted">You are creating a breed...</small>

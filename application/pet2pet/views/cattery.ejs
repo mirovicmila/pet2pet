@@ -1,23 +1,71 @@
 <!-- id, name, address, contact, description, workinghours, image -->
 
 <% include ../views/layout %>
-<script
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <script
   src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
   crossorigin=""
 ></script>
 <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
 <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
-<h1>Cattery Profile</h1>
-<ul>
-  <li>id: "<%= id%>"</li>
-  <li>name: "<%= name%>"</li>
-  <li>address: "<%= address%>"</li>
-  <li>contact: "<%= contact%>"</li>
-  <li>description: "<%= description%>"</li>
-  <li>workingHours: "<%= workinghours%>"</li>
-  <li>image: "<%= image%>"</li>
-</ul>
+  </head>
+  <body>
+
+    <section class="hero is-warning is-fixed-top">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            <%= name %>
+          </h1>
+          <h2 class="subtitle">
+            Cattery
+          </h2>
+        </div>
+      </div>
+    </section>
+    <br />
+<div class="container container-fluid">
+  <img src="<%=image%>" class="rounded mx-auto d-block"/>
+    <br/>
+    
+    <div class="card w-50 mx-auto" >
+      <div class="card-content">
+        <div class="content">
+          <div class="d-flex flex-row justify-content-between">
+            <i class="fas fa-address-book align-self-center d-flex flex-row" aria-hidden="true"><p class="lead text-muted pl-4">  Contact: </p></i>
+            <p class="lead"> <%=contact%></p>
+          </div>
+          <div class="d-flex flex-row justify-content-between">
+            <i class="fas fa-map-marker-alt align-self-center d-flex flex-row" aria-hidden="true"><p class="lead text-muted pl-4">  Address: </p></i>
+            <p class="lead"> <%=address%></p>
+          </div>
+          <div class="d-flex flex-row justify-content-between">
+            <i class="fas fa-user-clock align-self-center d-flex flex-row" aria-hidden="true"><p class="lead text-muted pl-3">  Working hours: </p></i>
+            <p class="lead"> <%=workinghours%></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="lead"><%= description%></p>
+    <br />
+    <h3 class="display-4">Kittens in our cattery</h3>
+    <br />
+    <% if(kittens.length == 0) { %>
+      <p class="lead">There are no kittens available...</p>
+    <% } %>
+    <% kittens.forEach(function(kitten){ %>
+  <li>
+    <a href="/kitten/<%= kitten.idkitten%>"><%= kitten.kittenname%></a>
+  </li>
+  <% }) %>
+  <br />
 <style>
   #map {
       width: 900px;
@@ -49,12 +97,12 @@ window.onload = function() {
 
 }
 </script>
-<h3>Kittens</h3>
-  <% kittens.forEach(function(kitten){ %>
-  <li>
-    <a href="/kitten/<%= kitten.idkitten%>"><%= kitten.kittenname%></a>
-  </li>
-  <% }) %>
-
-<a class="editcattery" href="/editcattery/<%=id%>">Edit</a>
-<a class="deletecattery" href="" data-id="<%=id%>">Delete</a>
+  <br /><br/>
+  <div class="card mx-auto w-25 d-flex flex-row justify-content-around p-4">
+    <button class="btn btn-primary"><a class="editcattery text-light" href="/editcattery/<%=id%>">Edit cattery</a></button>
+    <button class="btn btn-danger"><a class="deletecattery text-light" href="" data-id="<%=id%>">Delete cattery</a></button>
+  </div>
+</div>
+<br />
+  </body>
+  </html>

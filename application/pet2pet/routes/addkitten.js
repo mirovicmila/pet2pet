@@ -22,10 +22,10 @@ router.get("/", function (req, res, next) {
 router.post("/", function (req, res) {
   id = cassandra.types.uuid();
   var upsertKitten =
-    "INSERT INTO pet2pet.kitten(id, name, birthday, mom, dad, gender, description, price, available) VALUES(?,?,?,?,?,?,?,?,?)";
+    "INSERT INTO pet2pet.kitten(id, name, birthday, mom, dad, gender, description, price, available, image) VALUES(?,?,?,?,?,?,?,?,?,?)";
   client.execute(
     upsertKitten,
-    [id, req.body.name, req.body.birthday, req.body.mom, req.body.dad, req.body.gender, req.body.description, req.body.price, req.body.available],
+    [id, req.body.name, req.body.birthday, req.body.mom, req.body.dad, req.body.gender, req.body.description, req.body.price, req.body.available, req.body.image],
     function (err, result) {
       if (err) {
         res.status(404).send({ msg: err });

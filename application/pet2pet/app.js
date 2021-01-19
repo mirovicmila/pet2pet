@@ -20,6 +20,7 @@ var editcattery = require("./routes/editcattery")
 var addcattery = require("./routes/addcattery");
 var addkittencattery = require("./routes/addkittencattery");
 var addcatterybreed = require("./routes/addcatterybreed");
+var addsimilarbreed = require("./routes/addsimilarbreed");
 
 var app = express();
 
@@ -49,6 +50,7 @@ app.use("/addkitten", addkitten);
 app.use("/editkitten", editkitten);
 app.use("/addcatterybreed", addcatterybreed);
 app.use("/addkittencattery", addkittencattery);
+app.use("/addsimilarbreed", addsimilarbreed);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

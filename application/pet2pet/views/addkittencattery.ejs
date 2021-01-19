@@ -3,14 +3,14 @@
 <!-- id, breed, size, coat, color, description, image, lifespan, food -->
 <h1 class="display-1">Add Kitten in Cattery</h1>
 <form name="addkittencattery" method="POST" action="/addkittencattery">
-    <select class="form-control form-control-sm" type="search" name="kittenInfo" class="input" id="kittenInfo" placeholder="Choose kitten">
+    <select class="form-control form-control-sm" type="search" name="kittenInfo" class="input" id="kittenInfo" placeholder="Choose kitten" required>
         <option selected>Choose Kitten</option>
         <% kittens.forEach(function(kitten){ %>
             <option><%= kitten.id%>:<%= kitten.name %></option>
           <% }) %>
     </select>
     <br />
-    <select class="form-control form-control-sm" type="search" name="catteryInfo" class="input" id="catteryInfo" placeholder="Choose cattery">
+    <select class="form-control form-control-sm" type="search" name="catteryInfo" class="input" id="catteryInfo" placeholder="Choose cattery" required>
         <option selected>Choose Cattery</option>
         <% catteries.forEach(function(cattery){ %>
             <option><%= cattery.id%>:<%= cattery.name %></option>
