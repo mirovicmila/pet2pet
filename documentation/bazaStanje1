@@ -89,7 +89,8 @@ CREATE TABLE pet2pet.catteryinbreed (
     AND min_index_interval = 128
     AND read_repair_chance = 0.0
     AND speculative_retry = '99PERCENTILE';
-
+    
+    
 CREATE TABLE pet2pet.kitten (
     id uuid PRIMARY KEY,
     available text,
@@ -97,13 +98,15 @@ CREATE TABLE pet2pet.kitten (
     dad text,
     description text,
     gender text,
+    image text,
     mom text,
     name text,
     price text
 ) WITH bloom_filter_fp_chance = 0.01
     AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
     AND comment = ''
-    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32',
+ 'min_threshold': '4'}
     AND compression = {'chunk_length_in_kb': '64', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
     AND crc_check_chance = 1.0
     AND dclocal_read_repair_chance = 0.1
@@ -114,3 +117,4 @@ CREATE TABLE pet2pet.kitten (
     AND min_index_interval = 128
     AND read_repair_chance = 0.0
     AND speculative_retry = '99PERCENTILE';
+    
