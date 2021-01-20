@@ -1,6 +1,11 @@
 # pet2pet
 Studentski projekat iz oblasti Naprednih baza podataka. Bazira se na primeni i koriscenju Apache Cassandra-e. 
 
+Pokretanje aplikacije:
+1. Preuzeti projekat iz foldera application kao zip ili pomocu git clone naredbe
+2. Projekat otvoriti pomocu Visual Studio Code-a i otvoriti novi terminal
+3. U terminalu uneti npm install, pa zatim npm start i aplikacija je pokrenuta (druga opcija za pokretanje je nodemon koji se instalira pomocu komande npm install nodemon -g).
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Pre pokretanja aplikacije:
 1. Potrebno je instalirati odgovarajucu verziju apache cassandra sa zvanicnog sajta. 
 2. Ukoliko nemate instalirano, instalirati Python 2.7.18 verziju i u System PATH dodati lokaciju na kojoj je instalacija -> C:\PYTHON27
@@ -17,8 +22,3 @@ Pokretanje cassandra apache-a:
 6. Izvrsiti komandu cqlsh i kada dobijete prikaz: cqlsh>     mozete unositi komande :)
 
 Napomena: Pre pokretanja same aplikacije, cassandra i cqlsh moraju biti pokrenuti u pozadini
-
-Pokretanje aplikacije:
-1. Preuzeti projekat iz foldera application kao zip ili pomocu git clone naredbe
-2. Projekat otvoriti pomocu Visual Studio Code-a i otvoriti novi terminal
-3. U terminalu uneti npm install, pa zatim npm start i aplikacija je pokrenuta
